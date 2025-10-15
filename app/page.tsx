@@ -5,9 +5,13 @@ import Link from "next/link";
 import { useWidgetProps } from "./hooks";
 
 export default function Home() {
-  const toolOutput = useWidgetProps<{ name?: string; result?: { structuredContent?: { name?: string } } }>();
+  const toolOutput = useWidgetProps<{
+    name?: string;
+    result?: { structuredContent?: { name?: string } };
+  }>();
 
-  const name = toolOutput?.result?.structuredContent?.name || toolOutput?.name;
+  const name =
+    toolOutput?.result?.structuredContent?.name || toolOutput?.name;
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -20,6 +24,7 @@ export default function Home() {
           height={38}
           priority
         />
+
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Welcome to the ChatGPT Apps SDK Next.js Starter
@@ -28,19 +33,30 @@ export default function Home() {
             Name returned from tool call: {name ?? "..."}
           </li>
           <li className="mb-2 tracking-[-.01em]">
-            MCP server path: <Link href="/mcp" className="underline">/mcp</Link>
+            MCP server path:{" "}
+            <Link href="/mcp" className="underline">
+              /mcp
+            </Link>
           </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <Link  
-          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-          prefetch={false} href="/custom-page" >
-            Visit another page
+          <Link
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+            prefetch={false}
+            href="/chat"
+          >
+            Åbn Zaxis AI Chat
           </Link>
-          <a href="https://vercel.com/templates/ai/chatgpt-app-with-next-js" target="_blank" rel="noopener noreferrer" className="underline">
-              Deploy on Vercel
-            </a>
+
+          <a
+            href="https://vercel.com/templates/ai/chatgpt-app-with-next-js"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            Deploy on Vercel
+          </a>
         </div>
       </main>
     </div>
